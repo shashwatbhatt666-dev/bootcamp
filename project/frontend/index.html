@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Classroom & Student Engagement AI Suite</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <!-- App Container -->
+    <div class="app-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                        <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/>
+                    </svg>
+                </div>
+                <div class="brand-text">
+                    <h2>SmartClass AI</h2>
+                    <span class="badge-pill">Enterprise v2.5 • Kaggle AI</span>
+                </div>
+            </div>
+
+            <nav class="nav-menu">
+                <button class="nav-item active" data-tab="tab-overview" id="nav-overview">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                    <span>Dashboard & Analytics</span>
+                </button>
+                <button class="nav-item" data-tab="tab-webcam" id="nav-webcam">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                    <span>Vision & Engagement</span>
+                    <span class="live-dot" title="Live Video Analysis"></span>
+                </button>
+                <button class="nav-item" data-tab="tab-ml" id="nav-ml">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+                    <span>ML Outcome Predictor</span>
+                </button>
+                <button class="nav-item" data-tab="tab-nlp" id="nav-nlp">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    <span>Sentiment & Voice NLP</span>
+                </button>
+                <button class="nav-item" data-tab="tab-database" id="nav-database">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+                    <span>SQLite Directory</span>
+                </button>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="db-status">
+                    <span class="status-indicator online"></span>
+                    <span class="db-info">SQLite Database: Connected</span>
+                </div>
+                <div class="model-info">Trained on 8,884 Kaggle Images (90.97% Accuracy)</div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Top Header -->
+            <header class="topbar">
+                <div class="header-titles">
+                    <h1 id="page-title">Classroom Analytics & Monitoring Suite</h1>
+                    <p class="subtitle">Unified Multimodal Platform: Computer Vision, Machine Learning, and NLP</p>
+                </div>
+                <div class="topbar-actions">
+                    <button class="btn btn-outline" id="btn-refresh-data">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+                        <span>Refresh Data</span>
+                    </button>
+                    <button class="btn btn-primary" id="btn-quick-attendance">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                        <span>Launch Camera</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- TAB 1: OVERVIEW & DASHBOARD -->
+            <section class="tab-panel active" id="tab-overview">
+                <!-- KPI Metric Cards Grid -->
+                <div class="metrics-grid">
+                    <div class="card metric-card">
+                        <div class="metric-header">
+                            <span class="metric-label">Enrolled Students</span>
+                            <div class="metric-icon cyan">👥</div>
+                        </div>
+                        <div class="metric-value" id="kpi-total-students">--</div>
+                        <div class="metric-subtext">Cleaned & RegEx verified in SQLite</div>
+                    </div>
+                    <div class="card metric-card">
+                        <div class="metric-header">
+                            <span class="metric-label">Average Attendance</span>
+                            <div class="metric-icon purple">📊</div>
+                        </div>
+                        <div class="metric-value" id="kpi-avg-attendance">--%</div>
+                        <div class="metric-subtext">Across all academic cohorts</div>
+                    </div>
+                    <div class="card metric-card">
+                        <div class="metric-header">
+                            <span class="metric-label">Classroom Engagement</span>
+                            <div class="metric-icon green">⚡</div>
+                        </div>
+                        <div class="metric-value" id="kpi-engagement">88.5%</div>
+                        <div class="metric-subtext">Kaggle vision behavior index</div>
+                    </div>
+                    <div class="card metric-card">
+                        <div class="metric-header">
+                            <span class="metric-label">Classroom Sentiment</span>
+                            <div class="metric-icon orange">💬</div>
+                        </div>
+                        <div class="metric-value" id="kpi-sentiment">--% Pos</div>
+                        <div class="metric-subtext">TextBlob NLP mood index</div>
+                    </div>
+                </div>
+
+                <!-- Charts & Visual Analytics Section -->
+                <div class="dashboard-grid">
+                    <div class="card chart-card span-2">
+                        <div class="card-header">
+                            <div>
+                                <h3>Academic Outcome Matrix (Study Hours vs Exam Score)</h3>
+                                <p class="card-desc">Interactive correlation of study dedication, attendance, and exam success</p>
+                            </div>
+                            <span class="badge success">Supervised ML</span>
+                        </div>
+                        <div class="chart-container" id="scatter-chart-box">
+                            <canvas id="canvas-scatter" width="650" height="280"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="card chart-card">
+                        <div class="card-header">
+                            <div>
+                                <h3>ML Feature Importances</h3>
+                                <p class="card-desc">Key factors driving student performance</p>
+                            </div>
+                        </div>
+                        <div class="feature-bars" id="feature-bars-container">
+                            <div class="bar-group">
+                                <div class="bar-info"><span>Attendance Rate</span><strong>45.6%</strong></div>
+                                <div class="bar-track"><div class="bar-fill purple" style="width: 45.6%"></div></div>
+                            </div>
+                            <div class="bar-group">
+                                <div class="bar-info"><span>Weekly Study Hours</span><strong>44.1%</strong></div>
+                                <div class="bar-track"><div class="bar-fill cyan" style="width: 44.1%"></div></div>
+                            </div>
+                            <div class="bar-group">
+                                <div class="bar-info"><span>Assignments Completed</span><strong>10.3%</strong></div>
+                                <div class="bar-track"><div class="bar-fill green" style="width: 10.3%"></div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card chart-card">
+                        <div class="card-header">
+                            <div>
+                                <h3>Classroom Mood Breakdown</h3>
+                                <p class="card-desc">Sentiment distribution from live student feedback</p>
+                            </div>
+                        </div>
+                        <div class="sentiment-donut-wrap">
+                            <canvas id="canvas-sentiment" width="180" height="180"></canvas>
+                            <div class="donut-legend" id="sentiment-legend">
+                                <div class="legend-item"><span class="dot green"></span> Positive <strong id="val-pos">--</strong></div>
+                                <div class="legend-item"><span class="dot orange"></span> Neutral <strong id="val-neu">--</strong></div>
+                                <div class="legend-item"><span class="dot red"></span> Negative <strong id="val-neg">--</strong></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card chart-card span-2">
+                        <div class="card-header">
+                            <div>
+                                <h3>Live Feedback Voice Cloud</h3>
+                                <p class="card-desc">Key themes dynamically extracted via NLTK & WordCloud</p>
+                            </div>
+                            <button class="btn btn-sm btn-outline" id="btn-refresh-wc">Regenerate</button>
+                        </div>
+                        <div class="wordcloud-box" id="dashboard-wordcloud-box">
+                            <img id="dashboard-wordcloud-img" alt="Feedback WordCloud" src="/api/feedback/wordcloud" />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 2: LIVE WEBCAM & VISION ENGAGEMENT (KAGGLE DATASET MODEL) -->
+            <section class="tab-panel" id="tab-webcam">
+                <!-- Distraction / Drowsiness Alert Banner -->
+                <div class="alert-banner" id="live-alert-banner" style="display: none;">
+                    <div class="alert-icon">⚠️</div>
+                    <div class="alert-text" id="live-alert-text">ATTENTION ALERT: Drowsiness or Device Violation Detected</div>
+                </div>
+
+                <div class="webcam-layout">
+                    <!-- Left: Camera Viewport Card -->
+                    <div class="card camera-card">
+                        <div class="card-header">
+                            <div class="camera-status">
+                                <span class="pulse-indicator" id="cam-indicator"></span>
+                                <div>
+                                    <h3>Classroom Vision & Engagement Stream</h3>
+                                    <p class="card-desc">Trained on Kaggle 8-Class Dataset • 90.97% Accuracy • Pure English Annotations</p>
+                                </div>
+                            </div>
+                            <div class="hud-badges">
+                                <div class="headcount-badge">
+                                    <span>STUDENTS:</span>
+                                    <strong id="live-headcount-val">0</strong>
+                                </div>
+                                <div class="engagement-badge" id="hud-engagement-box">
+                                    <span>ENGAGEMENT:</span>
+                                    <strong id="live-engagement-val">--%</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="viewport-wrapper">
+                            <!-- HUD Screen Elements -->
+                            <div class="viewport-hud">
+                                <div class="hud-pill"><span class="hud-rec-dot"></span> LIVE 30 FPS • 1080P VISION ENGINE</div>
+                                <div class="hud-pill" id="hud-model-tag">AI SUITE RECOGNITION ACTIVE</div>
+                            </div>
+
+                            <div class="corner-reticle top-left"></div>
+                            <div class="corner-reticle top-right"></div>
+                            <div class="corner-reticle bottom-left"></div>
+                            <div class="corner-reticle bottom-right"></div>
+
+                            <!-- Animated Scanning Laser Line -->
+                            <div class="scanner-laser" id="scanner-laser"></div>
+
+                            <!-- Raw Video Stream -->
+                            <video id="webcam-video" autoplay playsinline muted></video>
+                            <!-- Detection Canvas Overlay -->
+                            <canvas id="vision-canvas"></canvas>
+                            <!-- Processed Server Snapshot -->
+                            <img id="processed-snapshot" alt="Analyzed frame" style="display: none;" />
+                            
+                            <!-- Offline/Empty placeholder -->
+                            <div class="camera-placeholder" id="cam-placeholder">
+                                <div class="placeholder-icon">📷</div>
+                                <h4>Camera Feed Inactive</h4>
+                                <p>Launch your live webcam stream or click any Kaggle test image below to evaluate the model with 1 click.</p>
+                                <div class="placeholder-actions">
+                                    <button class="btn btn-primary" id="btn-start-camera">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                                        <span>Start Live Webcam</span>
+                                    </button>
+                                    <button class="btn btn-outline" id="btn-trigger-upload">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                                        <span>Upload Classroom Image</span>
+                                    </button>
+                                    <input type="file" id="input-upload-image" accept="image/*" style="display: none;">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 8 Real-time Behavior Cards (Kaggle Dataset) -->
+                        <div class="behavior-chips-row">
+                            <div class="behavior-chip" id="chip-lookforward">
+                                <span class="chip-dot green"></span>
+                                <div class="chip-info">
+                                    <span class="chip-name">ATTENTIVE</span>
+                                    <span class="chip-sub">Active Focus</span>
+                                </div>
+                                <strong id="cnt-lookforward">0</strong>
+                            </div>
+                            <div class="behavior-chip" id="chip-handrise">
+                                <span class="chip-dot purple"></span>
+                                <div class="chip-info">
+                                    <span class="chip-name">HAND RAISED</span>
+                                    <span class="chip-sub">Participation</span>
+                                </div>
+                                <strong id="cnt-handrise">0</strong>
+                            </div>
+                            <div class="behavior-chip" id="chip-read">
+                                <span class="chip-dot cyan"></span>
+                                <div class="chip-info">
+                                    <span class="chip-name">READING</span>
+                                    <span class="chip-sub">Study Notes</span>
+                                </div>
+                                <strong id="cnt-read">0</strong>
+                            </div>
+                            <div class="behavior-chip" id="chip-write">
+                                <span class="chip-dot green"></span>
+                                <div class="chip-info">
+                                    <span class="chip-name">WRITING</span>
+                                    <span class="chip-sub">Note Taking</span>
+                                </div>
+                                <strong id="cnt-write">0</strong>
+                            </div>
+                            <div class="behavior-chip" id="chip-stand">
+                                <span class="chip-dot blue"></span>
+                                <div class="chip-info">
+                                    <span class="chip-name">STANDING</span>
+                                    <span class="chip-sub">Answering</span>
+                                </div>
+                                <strong id="cnt-stand">0</strong>
+                            </div>
+                            <div class="behavior-chip" id="chip-turnhead">
+                                <span class="chip-dot orange"></span>
+                                <div class="chip-info">
+                                    <span class="chip-name">DISTRACTED</span>
+                                    <span class="chip-sub">Looking Away</span>
+                                </div>
+                                <strong id="cnt-turnhead">0</strong>
+                            </div>
+                            <div class="behavior-chip alert-chip" id="chip-sleep">
+                                <span class="chip-dot red"></span>
+                                <div class="chip-info">
+                                    <span class="chip-name">SLEEPING</span>
+                                    <span class="chip-sub">Drowsy Alert</span>
+                                </div>
+                                <strong id="cnt-sleep">0</strong>
+                            </div>
+                            <div class="behavior-chip alert-chip" id="chip-device">
+                                <span class="chip-dot red"></span>
+                                <div class="chip-info">
+                                    <span class="chip-name">PHONE USAGE</span>
+                                    <span class="chip-sub">Violation Alert</span>
+                                </div>
+                                <strong id="cnt-device">0</strong>
+                            </div>
+                        </div>
+
+                        <!-- Camera Control Bar -->
+                        <div class="camera-controls">
+                            <div class="ctrl-group">
+                                <button class="btn btn-danger" id="btn-stop-camera" disabled>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/></svg>
+                                    <span>Stop Stream</span>
+                                </button>
+                                <button class="btn btn-outline" id="btn-simulate-frame">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                                    <span>Test Demo Scene</span>
+                                </button>
+                                <button class="btn btn-outline" id="btn-toggle-sound">
+                                    <span id="sound-icon">🔊</span> <span id="sound-status-text">Audio Alerts: ON</span>
+                                </button>
+                                <button class="btn btn-outline" id="btn-download-frame">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                                    <span>Download Snapshot</span>
+                                </button>
+                            </div>
+
+                            <div class="ctrl-group">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="chk-auto-scan" checked>
+                                    <span class="slider"></span>
+                                    <span class="toggle-label">Continuous Scan (2s)</span>
+                                </label>
+                                <button class="btn btn-success" id="btn-log-attendance">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                                    <span>Save Session to DB</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Kaggle Dataset Interactive Benchmark Gallery -->
+                        <div class="kaggle-benchmark-box">
+                            <div class="benchmark-header">
+                                <div>
+                                    <h4>⚡ Real Kaggle Dataset Benchmark Gallery (8,884 Images • 267k Annotations)</h4>
+                                    <p>Click any test classroom scene below to evaluate the trained model instantly with pure English recognition:</p>
+                                </div>
+                            </div>
+                            <div class="sample-grid" id="sample-gallery-grid">
+                                <div class="loading-samples">Loading Kaggle dataset scenes...</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Attendance Session History & Live Feed Details -->
+                    <div class="card attendance-side-card">
+                        <div class="card-header">
+                            <h3>Live Attendance & Engagement Ledger</h3>
+                            <span class="badge info">SQLite Sync</span>
+                        </div>
+                        <p class="card-desc">Headcount and engagement scores saved to SQLite</p>
+
+                        <div class="attendance-history-list" id="attendance-history-list">
+                            <div class="empty-state">No attendance sessions logged yet today.</div>
+                        </div>
+
+                        <div class="vision-info-box">
+                            <h4>Kaggle Dataset & Model Architecture</h4>
+                            <ul>
+                                <li><strong>Dataset:</strong> 8,884 Classroom Images, 267,888 Bounding Boxes</li>
+                                <li><strong>Action Classifier:</strong> ExtraTrees + Sobel Spatial Pyramids (90.97% Acc)</li>
+                                <li><strong>English Labels:</strong> ATTENTIVE, HAND RAISED, READING, WRITING, STANDING, DISTRACTED, SLEEPING, PHONE USAGE</li>
+                                <li><strong>Database:</strong> SQLite Relational Store [classroom.db]</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 3: MACHINE LEARNING OUTCOME PREDICTOR -->
+            <section class="tab-panel" id="tab-ml">
+                <div class="ml-layout">
+                    <!-- Left: Interactive Input Panel -->
+                    <div class="card input-card">
+                        <div class="card-header">
+                            <div>
+                                <h3>Student Profile Configuration</h3>
+                                <p class="card-desc">Input academic parameters or select a reference student preset</p>
+                            </div>
+                        </div>
+
+                        <!-- Presets -->
+                        <div class="presets-row">
+                            <span class="preset-label">Quick Presets:</span>
+                            <button class="btn btn-sm btn-preset" data-h="8.5" data-a="95" data-as="18">🌟 High Achiever</button>
+                            <button class="btn btn-sm btn-preset" data-h="4.5" data-a="75" data-as="12">⚖️ Consistent</button>
+                            <button class="btn btn-sm btn-preset" data-h="1.5" data-a="50" data-as="6">⚠️ Needs Support</button>
+                        </div>
+
+                        <form id="form-predictor" class="predictor-form">
+                            <!-- Slider 1: Study Hours -->
+                            <div class="form-group">
+                                <div class="form-label-row">
+                                    <label for="input-study-hours">Weekly Study Hours</label>
+                                    <span class="val-badge" id="lbl-study-hours">5.5 hrs</span>
+                                </div>
+                                <input type="range" id="input-study-hours" min="0.5" max="10.0" step="0.1" value="5.5" class="slider-input">
+                                <div class="slider-ticks"><span>0.5h</span><span>5.0h</span><span>10.0h</span></div>
+                            </div>
+
+                            <!-- Slider 2: Attendance -->
+                            <div class="form-group">
+                                <div class="form-label-row">
+                                    <label for="input-attendance">Class Attendance (%)</label>
+                                    <span class="val-badge" id="lbl-attendance">80 %</span>
+                                </div>
+                                <input type="range" id="input-attendance" min="40" max="100" step="1" value="80" class="slider-input">
+                                <div class="slider-ticks"><span>40%</span><span>70%</span><span>100%</span></div>
+                            </div>
+
+                            <!-- Slider 3: Assignments -->
+                            <div class="form-group">
+                                <div class="form-label-row">
+                                    <label for="input-assignments">Assignments Completed (out of 20)</label>
+                                    <span class="val-badge" id="lbl-assignments">14</span>
+                                </div>
+                                <input type="range" id="input-assignments" min="0" max="20" step="1" value="14" class="slider-input">
+                                <div class="slider-ticks"><span>0</span><span>10</span><span>20</span></div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-block" id="btn-run-prediction">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                                <span>Run Inference (Decision Tree & Regression)</span>
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Right: Prediction Result Showcase -->
+                    <div class="card result-card">
+                        <div class="card-header">
+                            <div>
+                                <h3>Inference & Predictive Analytics</h3>
+                                <p class="card-desc">Synthesized output from trained ML models</p>
+                            </div>
+                            <span class="badge" id="badge-model-status">Trained Model</span>
+                        </div>
+
+                        <div class="result-showcase">
+                            <!-- Circular Pass Probability Gauge -->
+                            <div class="gauge-card">
+                                <div class="circle-gauge">
+                                    <svg viewBox="0 0 36 36" class="circular-chart">
+                                        <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                        <path class="circle" id="gauge-fill" stroke-dasharray="100, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                        <text x="18" y="20.35" class="percentage" id="gauge-text">100%</text>
+                                    </svg>
+                                </div>
+                                <div class="gauge-title">Pass Probability</div>
+                            </div>
+
+                            <!-- Outcomes Grid -->
+                            <div class="outcomes-grid">
+                                <div class="outcome-box">
+                                    <span class="box-label">Classification Result</span>
+                                    <div class="box-value pass" id="out-result">PASS</div>
+                                    <span class="box-note">Decision Tree (depth=3)</span>
+                                </div>
+                                <div class="outcome-box">
+                                    <span class="box-label">Estimated Exam Score</span>
+                                    <div class="box-value" id="out-score">78.5 / 100</div>
+                                    <span class="box-note">Linear Regression (R² = 0.92)</span>
+                                </div>
+                                <div class="outcome-box span-2">
+                                    <span class="box-label">Behavioral Profile Category</span>
+                                    <div class="box-value cluster" id="out-cluster">High Achiever</div>
+                                    <span class="box-note">Unsupervised K-Means (k=3) Cluster Signature</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Recommendations based on prediction -->
+                        <div class="recommendation-box" id="recommendation-text">
+                            <strong>AI Guidance:</strong> Student demonstrates balanced study habits and steady attendance.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 4: NLP SENTIMENT & VOICE ANALYZER -->
+            <section class="tab-panel" id="tab-nlp">
+                <div class="nlp-layout">
+                    <!-- Left: Real-time Feedback Submission -->
+                    <div class="card feedback-input-card">
+                        <div class="card-header">
+                            <div>
+                                <h3>Student Feedback Sentiment Engine</h3>
+                                <p class="card-desc">Type student feedback to evaluate emotion, polarity, and subjectivity</p>
+                            </div>
+                        </div>
+
+                        <form id="form-feedback" class="feedback-form">
+                            <div class="form-group">
+                                <label for="fb-student-name">Student Name (Optional)</label>
+                                <input type="text" id="fb-student-name" placeholder="e.g. Rahul Sharma" class="text-input">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="fb-comment">Classroom Feedback / Comment</label>
+                                <textarea id="fb-comment" rows="4" placeholder="e.g. Loved the computer vision practical, but the theory was a bit fast!" class="textarea-input"></textarea>
+                            </div>
+
+                            <!-- Live Sentiment Meter as you type -->
+                            <div class="live-meter-box">
+                                <div class="meter-item">
+                                    <span>Live Polarity:</span>
+                                    <strong id="live-polarity">0.00</strong>
+                                </div>
+                                <div class="meter-item">
+                                    <span>Subjectivity:</span>
+                                    <strong id="live-subjectivity">0.00</strong>
+                                </div>
+                                <div class="meter-item">
+                                    <span>Detected Mood:</span>
+                                    <span class="mood-tag neutral" id="live-mood">NEUTRAL 😐</span>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-block" id="btn-submit-feedback">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                                <span>Analyze & Save to Database</span>
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Right: Feedback Feed & WordCloud -->
+                    <div class="card feedback-feed-card">
+                        <div class="card-header">
+                            <div>
+                                <h3>Classroom Feedback Stream</h3>
+                                <p class="card-desc">Live sentiment audit stored in SQLite database</p>
+                            </div>
+                            <span class="badge info">NLP Audit</span>
+                        </div>
+
+                        <div class="feedback-feed" id="feedback-feed-list">
+                            <!-- Populated dynamically via JS -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 5: SQLITE STUDENT DIRECTORY -->
+            <section class="tab-panel" id="tab-database">
+                <div class="card directory-card">
+                    <div class="card-header table-header">
+                        <div>
+                            <h3>Classroom Student Database</h3>
+                            <p class="card-desc">60 verified student records loaded from SQLite</p>
+                        </div>
+                        <div class="table-actions">
+                            <input type="text" id="search-student" placeholder="🔍 Search student name or ID..." class="search-input">
+                            <select id="filter-risk" class="select-input">
+                                <option value="All">All Risk Levels</option>
+                                <option value="Low">Low Risk</option>
+                                <option value="Moderate">Moderate Risk</option>
+                                <option value="High">High Risk</option>
+                            </select>
+                            <select id="filter-result" class="select-input">
+                                <option value="All">All Outcomes</option>
+                                <option value="Pass">Pass Only</option>
+                                <option value="Fail">At Risk Only</option>
+                            </select>
+                            <button class="btn btn-primary btn-sm" id="btn-open-add-student">+ Add Student</button>
+                        </div>
+                    </div>
+
+                    <!-- Student Table -->
+                    <div class="table-responsive">
+                        <table class="data-table" id="students-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Student Name</th>
+                                    <th>Study Hours</th>
+                                    <th>Attendance</th>
+                                    <th>Assignments</th>
+                                    <th>Exam Score</th>
+                                    <th>Result</th>
+                                    <th>Risk Level</th>
+                                    <th>Quick Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="students-table-body">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal: Add Student -->
+    <div class="modal-overlay" id="modal-add-student">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>Add New Student Record</h3>
+                <button class="btn-close" id="btn-close-modal">&times;</button>
+            </div>
+            <form id="form-new-student">
+                <div class="form-group">
+                    <label>Student ID</label>
+                    <input type="text" id="new-id" placeholder="e.g. STU1061" required class="text-input">
+                </div>
+                <div class="form-group">
+                    <label>Student Name (Cleaned with RegEx)</label>
+                    <input type="text" id="new-name" placeholder="e.g. Kunal Verma" required class="text-input">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Weekly Study Hours</label>
+                        <input type="number" id="new-hours" step="0.1" min="0" max="15" value="6.0" required class="text-input">
+                    </div>
+                    <div class="form-group">
+                        <label>Attendance %</label>
+                        <input type="number" id="new-attendance" min="0" max="100" value="85" required class="text-input">
+                    </div>
+                    <div class="form-group">
+                        <label>Assignments (0-20)</label>
+                        <input type="number" id="new-assignments" min="0" max="20" value="15" required class="text-input">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Save to SQLite Database</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notification Element -->
+    <div class="toast" id="toast-notification"></div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>

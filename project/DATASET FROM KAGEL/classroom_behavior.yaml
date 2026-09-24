@@ -1,0 +1,13 @@
+names:
+- handrise
+- look_forward
+- read
+- sleep
+- stand
+- turn_head
+- using_device
+- write
+nc: 8
+path: C:\Users\Shashwat Bhatt\Desktop\bootcamp\project\DATASET FROM KAGEL
+train: images/train
+val: images/val

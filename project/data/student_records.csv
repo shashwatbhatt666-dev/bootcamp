@@ -1,0 +1,61 @@
+student_id,name,study_hours,attendance,assignments,exam_score,result,risk_level,feedback
+STU1001,Rahul Sharma,3.7,55,15,62.9,1,Moderate,The practical sessions were super engaging and clear!
+STU1002,Aman Kumar,8.6,84,4,82.5,1,Low,"Struggling a bit with recursion and tree math, need extra help."
+STU1003,Rohan Singh,6.7,57,2,43.4,0,High,Loved the computer vision hands-on exercise with webcam!
+STU1004,Vivek Patel,5.6,86,6,72.7,1,Moderate,Excellent explanation of gradient descent and cost functions.
+STU1005,Arjun Gupta,1.8,92,15,70.0,1,Moderate,Lectures feel a bit too fast in the afternoon slots.
+STU1006,Priya Verma,1.8,63,8,46.8,0,High,Really fun and practical bootcamp experience overall!
+STU1007,Ananya Deshmukh,1.0,65,10,38.7,0,High,Assignments are quite challenging but very rewarding.
+STU1008,Kunal Joshi,7.9,64,16,77.7,1,Low,Could we get more code templates for neural networks?
+STU1009,SNEHA KAPOOR,5.6,99,16,85.5,1,Low,Great energy from instructors and very helpful lab mentors.
+STU1010,Aditya Rao,6.5,99,11,77.3,1,Low,The project was awesome and gave me real confidence in AI!
+STU1011,Vikram Mehta,0.7,99,14,56.7,1,Moderate,The practical sessions were super engaging and clear!
+STU1012,Neha Shah,8.7,84,8,82.4,1,Low,"Struggling a bit with recursion and tree math, need extra help."
+STU1013,Tanvi Nair,7.6,80,18,93.7,1,Low,Loved the computer vision hands-on exercise with webcam!
+STU1014,Karan Malhotra,2.3,68,5,39.4,0,High,Excellent explanation of gradient descent and cost functions.
+STU1015,Pooja Bansal,2.0,54,6,33.9,0,High,Lectures feel a bit too fast in the afternoon slots.
+STU1016,Siddharth Roy,2.1,84,8,51.4,1,Moderate,Really fun and practical bootcamp experience overall!
+STU1017,Divya Sen,3.1,40,14,56.0,1,Moderate,Assignments are quite challenging but very rewarding.
+STU1018,Rishi Kapoor,5.0,64,16,67.0,1,Moderate,Could we get more code templates for neural networks?
+STU1019,Anjali Iyer,4.2,46,12,49.4,0,High,Great energy from instructors and very helpful lab mentors.
+STU1020,Gaurav Pandey,3.0,48,5,42.1,0,High,The project was awesome and gave me real confidence in AI!
+STU1021,Deepak Mishra,5.7,63,14,70.9,1,Moderate,The practical sessions were super engaging and clear!
+STU1022,Meera Chawla,1.7,40,8,27.3,0,High,"Struggling a bit with recursion and tree math, need extra help."
+STU1023,Akash Bhatia,3.0,83,3,45.0,0,High,Loved the computer vision hands-on exercise with webcam!
+STU1024,Shruti Saxena,3.6,47,11,53.1,1,Moderate,Excellent explanation of gradient descent and cost functions.
+STU1025,Mohit Aggarwal,4.4,63,14,63.0,1,Moderate,Lectures feel a bit too fast in the afternoon slots.
+STU1026,Nidhi Jain,7.2,50,7,49.6,0,High,Really fun and practical bootcamp experience overall!
+STU1027,Varun Dutta,2.2,90,13,60.5,1,Moderate,Assignments are quite challenging but very rewarding.
+STU1028,Simran Kaur,4.9,56,13,64.3,1,Moderate,Could we get more code templates for neural networks?
+STU1029,Harsh Trivedi,5.5,47,12,54.2,1,Moderate,Great energy from instructors and very helpful lab mentors.
+STU1030,Kavita Reddy,0.9,74,8,43.4,0,High,The project was awesome and gave me real confidence in AI!
+STU1031,Ayush Gupta,5.7,74,2,66.2,1,Moderate,The practical sessions were super engaging and clear!
+STU1032,Swati Bose,1.9,72,2,39.1,0,High,"Struggling a bit with recursion and tree math, need extra help."
+STU1033,Pranav Chopra,1.1,98,14,53.5,1,Moderate,Loved the computer vision hands-on exercise with webcam!
+STU1034,Riya Das,8.6,44,10,67.8,1,Moderate,Excellent explanation of gradient descent and cost functions.
+STU1035,Naveen Menon,8.7,81,4,76.7,1,Low,Lectures feel a bit too fast in the afternoon slots.
+STU1036,Komal Patil,7.4,78,8,75.8,1,Low,Really fun and practical bootcamp experience overall!
+STU1037,Yash Bansal,3.1,97,7,58.2,1,Moderate,Assignments are quite challenging but very rewarding.
+STU1038,Isha Seth,1.3,80,9,47.8,0,High,Could we get more code templates for neural networks?
+STU1039,Alok Dubey,6.3,67,10,66.2,1,Moderate,Great energy from instructors and very helpful lab mentors.
+STU1040,Tara Pillai,4.2,46,6,45.2,0,High,The project was awesome and gave me real confidence in AI!
+STU1041,Abhishek Zade,1.5,48,2,31.5,0,High,The practical sessions were super engaging and clear!
+STU1042,Ashwini Mundaware,4.7,47,11,47.8,0,High,"Struggling a bit with recursion and tree math, need extra help."
+STU1043,Gayatri Gaikwad,0.8,51,13,38.0,0,High,Loved the computer vision hands-on exercise with webcam!
+STU1044,Harshada Shingane,8.2,73,16,86.3,1,Low,Excellent explanation of gradient descent and cost functions.
+STU1045,Vaibhav Kamble,2.7,72,10,55.3,1,Moderate,Lectures feel a bit too fast in the afternoon slots.
+STU1046,Kedar Adkar,6.1,87,18,81.4,1,Low,Really fun and practical bootcamp experience overall!
+STU1047,Ashraf Pasha,3.1,94,18,73.3,1,Moderate,Assignments are quite challenging but very rewarding.
+STU1048,Nandini Bhende,4.9,62,13,67.3,1,Moderate,Could we get more code templates for neural networks?
+STU1049,Shankar Rathod,5.1,63,8,47.9,0,High,Great energy from instructors and very helpful lab mentors.
+STU1050,Dilip Kate,2.1,76,3,46.5,0,High,The project was awesome and gave me real confidence in AI!
+STU1051,Pratiksha Sanjay,8.7,74,4,69.3,1,Moderate,The practical sessions were super engaging and clear!
+STU1052,Prajwal Borkar,7.1,83,18,80.7,1,Low,"Struggling a bit with recursion and tree math, need extra help."
+STU1053,Shravani Sunil,8.5,79,6,63.0,1,Moderate,Loved the computer vision hands-on exercise with webcam!
+STU1054,Sakshi Kale,8.1,61,18,79.4,1,Low,Excellent explanation of gradient descent and cost functions.
+STU1055,Samruddhi Sawant,5.6,66,18,72.7,1,Moderate,Lectures feel a bit too fast in the afternoon slots.
+STU1056,Sayali Shinde,8.3,74,18,87.1,1,Low,Really fun and practical bootcamp experience overall!
+STU1057,Shivani Sawant,1.3,40,3,21.8,0,High,Assignments are quite challenging but very rewarding.
+STU1058,Suresh Patil,2.2,74,3,34.9,0,High,Could we get more code templates for neural networks?
+STU1059,Bhavna Shah,0.9,76,6,42.6,0,High,Great energy from instructors and very helpful lab mentors.
+STU1060,Chetan Verma,3.3,86,2,53.8,1,Moderate,The project was awesome and gave me real confidence in AI!
